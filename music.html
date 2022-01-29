@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="music.css">
+</head>
+<body>
+    <div class="main_div">
+                <div class="music_container">
+                    <h2 id="title">Walliya</h2>
+                    <h3 id="artist">Harnoor</h3>
+                    <div class="img_container">
+                        <img src="images/3.jpg" alt="" id="images">
+                    </div>
+                    <audio src="music/sagar-2.mp3" controls hidden></audio>
+                    <!-- controls -->
+                    <div class="music_controls">
+                        <i class="fas fa-backward" id="prev" title="perivous"></i>
+                        <i class="fas fa-play main_button" id="play" title="play"></i>
+                        <i class="fas fa-forward" id="next" title="next"></i>
+                    </div>
+                </div>
+    </div>
+    <script>
+        const music = document.querySelector('audio');
+        const img = document.querySelector("img");
+        const play = document.getElementById("play");
+        const artist = document.getElementById("artist");
+        const title = document.getElementById("title");
+        const prev = document.getElementById("prev");
+        const next = document.getElementById("next");
+          
+        const songs = [{
+            name: "sagar-1",
+            title : "bol do",
+            artist :"harnoor",
+        },
+         {
+            name: "sagar-2",
+            title : "walliya ",
+            artist :"harnoor",
+         },
+         {
+            name: "sagar-3",
+            title : "chan",
+            artist :"armaan malik",
+         },
+        ];
+       
+
+        let isplaying = false;
+        // for pause function
+        const  playmusic = () => {
+            isplaying = true;
+            music.play();
+            play.classList.replace('fa-play','fa-pause')
+            img.classList.add("anime");
+    
+        };
+        // for pause function
+        const pausemusic = () => {
+            isplaying = false;
+            music.pause();
+            play.classList.replace('fa-pause','fa-play')
+            img.classList.remove("anime");
+    
+        };
+        play.addEventListener('click', () => {
+            if(isplaying){
+                pausemusic()
+            }else{
+                playmusic();
+            }
+        });
+        //changing the music data
+        const loadsong = (songs) => {
+            title.textContent = songs.title;
+            artist.textContent = songs.artist;
+            music.src = "music/" + songs.name + ".mp3";
+            img.src = "images/" + songs.name + "jpg";
+        }; 
+
+        loadsong(songs[3]);
+        next.addEventListener("click",)
+
+
+    </script>
+</body>
+</html>
